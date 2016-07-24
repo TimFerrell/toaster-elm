@@ -1,5 +1,7 @@
+module ToastTypes exposing (..)
+
 type alias Toast =
-  { type : String
+  { kind : String
   , title : String
   , message : String
-}
+  }
