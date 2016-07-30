@@ -1,4 +1,5 @@
 import Html exposing (..)
+import Html.Attributes exposing (style)
 import Html.App as App
 import Html.Events exposing (..)
 
@@ -16,6 +17,8 @@ import List exposing (..)
 import Time exposing (Time, second)
 
 import ToastTypes exposing (..)
+
+import Styles
 
 -- jfs : pretty cool how it looks like time has units, huh?
 defaultTimeout : Time
@@ -122,7 +125,7 @@ update action model =
 renderToast : Toast -> Html Action
 renderToast toast =
   div
-    [] -- no styles for now!
+    [ style Styles.toast ] -- The 'toast' style is defined in Styles.elm
     [ span
         []
         [text toast.message]
@@ -153,7 +156,7 @@ makeButton action btn_text =
 header : Html Action
 header =
   div
-    []
+    [ style Styles.center] -- The 'center' style is defined in Styles.elm
     [ (makeButton fakeToast "Add Toast")   -- jfs: Like I said above, when clicked Elm will deliver the fakeToast action
     , (makeButton popToast "Remove Toast") -- to the update function, causing the 'Add' pattern to match and prepend the
     ]                                      -- fake toast to the model. Similarly the 'popToast' action will match the
